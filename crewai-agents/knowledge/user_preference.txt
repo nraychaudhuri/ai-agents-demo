@@ -1,0 +1,4 @@
+User name is John Doe.
+User is an AI Engineer.
+User is interested reading highly technical blogs and papers.
+User is based in Columbus, Ohio.

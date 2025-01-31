@@ -1,0 +1,21 @@
+# src/latest_ai_development/config/tasks.yaml
+flight_booking_task:
+  description: >
+    Search and find the cheapest flights between `{origin}` and `{destination}`
+    Book the flights for `{user_name}`
+  expected_output: >
+    Booking confirmation number
+
+hotel_booking_task:
+  description: >
+    Search and find the cheapest hotel at `{destination}`
+    Book the hotel for `{user_name}`
+  expected_output: >
+    Booking confirmation number
+
+car_rental_task:
+  description: >
+    Search and find the cheapest car rental from airport at `{destination}`
+    Book the car rental `{user_name}`
+  expected_output: >
+    Booking confirmation number
