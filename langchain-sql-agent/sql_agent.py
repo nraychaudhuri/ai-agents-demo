@@ -149,7 +149,7 @@ workflow.add_node("prepare_response", prepare_response)
 
 
 # Define a conditional edge to decide whether to continue or end the workflow
-def should_continue(state: State) -> Literal[END, "prepare_response", "query_gen"]:
+def should_continue(state: State) -> Literal[END, "correct_query", "query_gen"]:
     messages = state["messages"]
     last_message = messages[-1]
     # If there is a tool call, then we finish
@@ -158,7 +158,7 @@ def should_continue(state: State) -> Literal[END, "prepare_response", "query_gen
     if last_message.content.startswith("Error:"):
         return "query_gen"
     else:
-        return "prepare_response"
+        return "correct_query"
 
 
 # Specify the edges between the nodes
@@ -172,7 +172,7 @@ workflow.add_conditional_edges(
     should_continue,
 )
 workflow.add_edge("correct_query", "execute_query")
-workflow.add_edge("execute_query", "query_gen")
+workflow.add_edge("execute_query", "prepare_response")
 workflow.add_edge("prepare_response", END)
 
 # Compile the workflow into a runnable
